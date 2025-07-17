@@ -11,6 +11,7 @@ import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -34,7 +35,7 @@ public class Product {
     private String image;
 
     @OneToMany
-    private Review review;
+    private List<Review> reviews;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
