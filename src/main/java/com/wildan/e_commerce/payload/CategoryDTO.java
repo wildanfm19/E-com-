@@ -1,6 +1,8 @@
-package com.wildan.e_commerce.model;
+package com.wildan.e_commerce.payload;
 
-import jakarta.persistence.*;
+import com.wildan.e_commerce.model.Product;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,15 +13,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Category {
+public class CategoryDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
     private String name;
@@ -28,12 +27,11 @@ public class Category {
 
     private String image;
 
-    @OneToMany(mappedBy = "category" , cascade = CascadeType.ALL)
-    private List<Product> products;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+
 }

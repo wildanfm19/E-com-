@@ -29,6 +29,10 @@ public class Product {
 
     private Integer quantity;
 
+    private double price;
+
+    private String image;
+
     @OneToMany
     private Review review;
 
