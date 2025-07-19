@@ -30,7 +30,7 @@ public class Product {
 
     private Integer quantity;
 
-    private double price;
+    private Double price;
 
     private String image;
 
