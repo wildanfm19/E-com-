@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,16 +15,17 @@ public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cartItemId;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    private Long quantity;
-
     @ManyToOne(optional = false)
     private Product product;
 
+    private Double productPrice;
+
+    private Integer quantity;
 
 }
