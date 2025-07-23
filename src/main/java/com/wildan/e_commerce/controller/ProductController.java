@@ -47,4 +47,28 @@ public class ProductController {
         ProductDTO product = productService.updateProduct(productDTO , productId);
         return new ResponseEntity<>(product , HttpStatus.OK);
     }
+
+    @GetMapping("/products/keyword/{keyword}")
+    public ResponseEntity<ProductResponse> searchProductByKeyword(
+            @RequestParam(name = "pageNumber", defaultValue = AppConstant.PAGE_NUMBER, required = false) Integer pageNumber,
+            @RequestParam(name = "pageSize", defaultValue = AppConstant.PAGE_SIZE, required = false) Integer pageSize,
+            @RequestParam(name = "sortBy", defaultValue = "productId", required = false) String sortBy,
+            @RequestParam(name = "sortOrder", defaultValue = AppConstant.SORT_DIR, required = false) String sortOrder,
+            @PathVariable String keyword
+    ){
+        ProductResponse productResponse = productService.getProductByKeyword(keyword , pageNumber , pageSize , sortBy , sortOrder);
+        return new ResponseEntity<>(productResponse , HttpStatus.OK);
+    }
+
+    @GetMapping("/products/category/{categoryId}")
+    public ResponseEntity<ProductResponse> getAllProductByCategory(
+            @RequestParam(name = "pageNumber", defaultValue = AppConstant.PAGE_NUMBER, required = false) Integer pageNumber,
+            @RequestParam(name = "pageSize", defaultValue = AppConstant.PAGE_SIZE, required = false) Integer pageSize,
+            @RequestParam(name = "sortBy", defaultValue = "productId", required = false) String sortBy,
+            @RequestParam(name = "sortOrder", defaultValue = AppConstant.SORT_DIR, required = false) String sortOrder,
+            @PathVariable Long categoryId
+    ){
+        ProductResponse productResponse = productService.getProductByCategory(categoryId , pageNumber , pageSize , sortBy , sortOrder);
+        return new ResponseEntity<>(productResponse , HttpStatus.OK);
+    }
 }
