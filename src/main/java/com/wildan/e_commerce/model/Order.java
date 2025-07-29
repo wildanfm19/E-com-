@@ -34,6 +34,9 @@ public class Order {
 
     private String status;
 
+    @OneToOne(mappedBy = "order" , cascade = CascadeType.ALL)
+    private Payment payment;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
