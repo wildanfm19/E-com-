@@ -1,8 +1,11 @@
 package com.wildan.e_commerce.payload;
 
+import com.wildan.e_commerce.model.Review;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +23,6 @@ public class ProductDTO {
     private Double price;
 
     private String image;
+
+    private List<Review> reviews;
 }
